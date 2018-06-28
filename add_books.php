@@ -21,9 +21,10 @@
 				<img src="images/logo-navbar.png">
 			</div>
 			<ul>
-				<li><a href="home.php">Home</a></li>
-				<li><a href="add_books.php" class="active">Add Books</a></li>
+				<li><a href="home.php" class="active">Home</a></li>
+				<li><a href="add_books.php">Add Books</a></li>
 				<li><a href="logs.php">Logs</a></li>
+				<li><a href="index.php"><span class="glyphicon glyphicon-log-out"></span></a></li>
 			</ul>
 		</nav>
 		<section class="sec1"></section>
