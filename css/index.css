@@ -1,0 +1,77 @@
+@font-face {
+	font-family: Golden Plains;
+	src: url(fonts/GoldenPlains.ttf);
+}
+
+@font-face {
+	font-family: Renner;
+	src: url(fonts/Renner.ttf);
+}
+
+@font-face {
+	font-family: Roboto;
+		src: url(fonts/Robot.ttf);
+}
+
+body {
+	overflow: hidden;
+	height: 100vh;
+}
+
+.login-form-div {
+	height: 100vh;
+	background-color: #fff;
+}
+
+.login-img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 50px;
+	width: 150px;
+	height: 150px;
+}
+
+.login-page-label {
+	font-family: Renner;
+	font-size: 30px;
+	margin-top: 25px;
+	margin-bottom: 30px;
+}
+
+.login-form-inputs {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 60%;
+}
+
+.login-form-btn {
+	width: 100%;
+	font-family: Renner;
+	-webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    background-color: #ffff5b;
+    color: #949699;
+}
+
+.register-page-label {
+	font-family: Roboto;
+	font-size: 30px;
+	font-weight: lighter;
+	margin-top: 75px;
+}
+
+.register-btn {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 60%;
+	font-family: Renner;
+	letter-spacing: 2px;
+	font-size: 2em;
+	background-color: #673AB7;
+	color: white;
+	-webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}

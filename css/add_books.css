@@ -1,0 +1,70 @@
+@font-face {
+	font-family: Golden Plains;
+	src: url(fonts/GoldenPlains.ttf);
+}
+
+@font-face {
+	font-family: Moon;
+	src: url(fonts/Moon.otf);
+}
+
+body {
+	overflow-x: hidden;
+}
+
+section.sec1 {
+	width: 100%;
+	height: 100vh;
+	background: url(../images/bg2.png);
+	background-size: cover;
+	background-position: center;
+}
+
+.content {
+	margin-top: 100px;
+	height: 100vh;
+}
+
+.content p {
+	width: 900px;
+	margin: 30px auto;
+	text-align: justify;
+	font-size: 20px;
+	line-height: 30px;
+}
+
+.content p.title {
+	padding-top: 150px;
+	font-family: Golden Plains;
+	font-size: 55px;
+	text-align: center;
+}
+
+.bookInformation-form {
+	display: block;
+	margin-right: auto;
+	margin-left: auto; 
+	margin-top: 75px;
+	margin-bottom: 10px;
+	width: 800px;
+}
+
+.bookInput {
+	font-family: Moon;
+	font-size: 20px;
+}
+
+.addBook-btn {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 33px;
+	width: 385px;
+	font-family: Moon;
+	letter-spacing: 2px;
+	font-size: 2em;
+	background-color: #673AB7;
+	color: white;
+	-webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
