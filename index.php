@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,13 +19,15 @@
 				<img src="images/logo.png" class='login-img'>
 			</div>
 			<p class="text-center login-page-label">Sign in to The Library</p>
-			<div class="login-form-inputs">
-				<input type="text" name="username" class="form-control" placeholder="Username" required>
-				<br>
-				<input type="text" name="pass" class="form-control" placeholder="Password" required>
-				<br>
-				<a href="home.php"><button class="btn login-form-btn">LOGIN</button></a>
-			</div>
+			<form action="login.php" method="POST">
+				<div class="login-form-inputs">
+					<input type="text" name="username" class="form-control" placeholder="Username" required>
+					<br>
+					<input type="password" name="pass" class="form-control" placeholder="Password" required>
+					<br>
+					<button class="btn login-form-btn" type="submit">LOGIN</button>
+				</div>
+			</form>
 			<div class="text-center register-div">
 				<p class="register-page-label">Register here</p>
 				<button class="btn register-btn" data-toggle="modal" data-target="#myModal">REGISTER</button>
