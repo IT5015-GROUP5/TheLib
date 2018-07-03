@@ -5,7 +5,7 @@
 	//////////////////SQL Query/////////////////
 	var_dump($_POST);
 	//query is subject to change depending on the database
-	$query = "SELECT * FROM account where username = '".$_POST['username']."' AND password = '".$_POST['pass']."'";
+	$query = "SELECT * FROM user where username = '".$_POST['username']."' AND password = '".$_POST['pass']."'";
 	$result = mysqli_query($conn,$query);
 	var_dump($query);
 	if (!$result) {
