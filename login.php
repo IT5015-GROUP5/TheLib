@@ -23,7 +23,7 @@
 		echo "<script>alert('login success');</script>";
 		header("Location:home.php");
 	}else{
-		echo "<script>alert('Wrong username and/or password');</script>";
+		$_SESSION['loginmsg'] = "FAILED";
 		header("Location:index.php");
 	}
 	///////////////////////////////////////////

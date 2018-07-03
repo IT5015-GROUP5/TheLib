@@ -1,4 +1,6 @@
-
+<?php
+	session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,6 +21,15 @@
 				<img src="images/logo.png" class='login-img'>
 			</div>
 			<p class="text-center login-page-label">Sign in to The Library</p>
+			<?php
+				if(isset($_SESSION['registermsg'])){
+					echo "<p class='text-center' style='color:red; font-weight:bold;'>REGISTRATION FAILED!</p>";
+					unset($_SESSION['registermsg']);
+				}else if(isset($_SESSION['loginmsg'])){
+					echo "<p class='text-center' style='color:red; font-weight:bold;'>INVALID USERNAME/PASSWORD!</p>";
+					unset($_SESSION['loginmsg']);
+				}
+			?>
 			<form action="login.php" method="POST">
 				<div class="login-form-inputs">
 					<input type="text" name="username" class="form-control" placeholder="Username" required>

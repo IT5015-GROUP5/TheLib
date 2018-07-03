@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	require("db_connect.php");
 
 	//////////////////SQL Query/////////////////
@@ -17,6 +18,9 @@
 				  VALUES ('".$_POST['username']."', '".$_POST['pass']."', '".$_POST['name']."')";
 		var_dump($query);
 		$newresult = mysqli_query($conn,$query);
+		header("Location:index.php");
+	}else {
+		$_SESSION['registermsg'] = "FAILED";
 		header("Location:index.php");
 	}
 	///////////////////////////////////////////
