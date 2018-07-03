@@ -17,6 +17,7 @@
 	$row = mysqli_fetch_assoc($result);
 	var_dump($row, $result);
 	if ($row != NULL) {
+		$_SESSION['logged_in'] = true;
 		$_SESSION["username"] = $row['username'];
 		$_SESSION["password"] = $row['password'];
 		echo "<script>alert('login success');</script>";
