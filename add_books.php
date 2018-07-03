@@ -1,3 +1,6 @@
+<?php 
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,23 +33,24 @@
 		<section class="sec1"></section>
 		<section class="content">
 			<p class="title">Add Book</p>
-			<form class="bookInformation-form">
+			<form class="bookInformation-form" action="insert_book.php" method="POST">
+				<input type = "hidden" name = "user" value = "<?php echo $_SESSION['username']; ?>">
 				<div class="form-group bookInput">
 					<label for="bookTitle">BOOK TITLE</label>
-    				<input type="text" class="form-control" id="bookTitle" placeholder="Eleanor and Park">
+    				<input type="text" class="form-control" name="bookTitle" id="bookTitle" placeholder="Eleanor and Park">
 				</div>
 				<div class="form-group bookInput">
 					<label for="bookAuthor">AUTHOR</label>
     				<div class="row">
     					<div class="col col-md-6">
     						<div class="input-group">
-							  <input type="text" class="form-control" placeholder="Rainbow" aria-describedby="basic-addon2">
+							  <input type="text" class="form-control" name="fName" placeholder="Rainbow" aria-describedby="basic-addon2">
 							  <span class="input-group-addon" id="basic-addon2">First Name</span>
 							</div>
     					</div>
     					<div class="col col-md-6">
     						<div class="input-group">
-							  <input type="text" class="form-control" placeholder="Rowell" aria-describedby="basic-addon2">
+							  <input type="text" class="form-control" name="lName" placeholder="Rowell" aria-describedby="basic-addon2">
 							  <span class="input-group-addon" id="basic-addon2">Last Name</span>
 							</div>
     					</div>
@@ -54,25 +58,25 @@
 				</div>
 				<div class="form-group bookInput">
 			    	<label for="bookDescription">BOOK DESCRIPTION</label>
-			    	<textarea class="form-control" id="bookDescription" rows="3"></textarea>
+			    	<textarea class="form-control" name="bookDesc" id="bookDescription" rows="3"></textarea>
 			  	</div>
 			  	<div class="row">
 			  		<div class="col col-md-6">
 			  			<div class="form-group bookInput">
 							<label for="bookISBN">ISBN</label>
-		    				<input type="text" class="form-control" id="bookISBN" placeholder="0-1234-1563-645-6">
+		    				<input type="text" class="form-control" name="ISBN" id="bookISBN" placeholder="0-1234-1563-645-6">
 						</div>
 						<div class="form-group bookInput">
 							<label for="bookPageCount">PAGE COUNT</label>
-		    				<input type="text" class="form-control" id="bookPageCount" placeholder="333">
+		    				<input type="text" class="form-control" name="pageCount" id="bookPageCount" placeholder="333">
 						</div>
 			  		</div>
 			  		<div class="col col-md-6">
 			  			<div class="form-group bookInput">
 							<label for="bookYearPub">YEAR PUBLISHED</label>
-		    				<input type="text" class="form-control" id="bookYearPub" placeholder="2012">
+		    				<input type="text" class="form-control" name="pubYear" id="bookYearPub" placeholder="2012">
 						</div>
-						<button class="btn addBook-btn">SUBMIT</button>
+						<button class="btn addBook-btn" type="submit">SUBMIT</button>
 			  		</div>
 			  	</div>
 			</form>
