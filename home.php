@@ -16,8 +16,6 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   	<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
-
-
 </head>
 <body>
 	<div class="wrapper">
@@ -55,50 +53,85 @@
 									<td><center>J.K. Rowling</center></td>
 									<td><center>1997</center></td>
 									<td><center>0-7475-3269-9</center></td>
-									<td>Add Edit and delete button</td>
+									<td>
+										<center>
+											<button class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span></button>
+											<button class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></button>
+										</center>
+									</td>
 								</tr>
 								<tr>
 									<td>Harry Potter and The Chamber of Secrets</td>
 									<td><center>J.K. Rowling</center></td>
 									<td><center>1998</center></td>
 									<td><center>9-7804-3906-486-6</center></td>
-									<td>Add Edit and delete button</td>
+									<td>
+										<center>
+											<button class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span></button>
+											<button class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></button>
+										</center>
+									</td>
 								</tr>
 								<tr>
 									<td>Harry Potter and The Prisoner of Azkaban</td>
 									<td><center>J.K. Rowling</center></td>
 									<td><center>1999</center></td>
 									<td><center>9-7814-0885-567-6</center></td>
-									<td>Add Edit and delete button</td>
+									<td>
+										<center>
+											<button class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span></button>
+											<button class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></button>
+										</center>
+									</td>
 								</tr>
 								<tr>
 									<td>Harry Potter and The Goblet of Fire</td>
 									<td><center>J.K. Rowling</center></td>
 									<td><center>2000</center></td>
 									<td><center>9-7807-4755-099-0</center></td>
-									<td>Add Edit and delete button</td>
+									<td>
+										<center>
+											<button class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span></button>
+											<button class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></button>
+										</center>
+									</td>
 								</tr>
 								<tr>
 									<td>Harry Potter and The Order of Phoenix</td>
 									<td><center>J.K. Rowling</center></td>
 									<td><center>2003</center></td>
 									<td><center>9-7817-8110-053-0</center></td>
-									<td>Add Edit and delete button</td>
+									<td>
+										<center>
+											<button class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span></button>
+											<button class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></button>
+										</center>
+									</td>
 								</tr>
 								<tr>
 									<td>Harry Potter and The Half Blood Prince</td>
 									<td><center>J.K. Rowling</center></td>
 									<td><center>2005</center></td>
 									<td><center>9-7814-0885-594-2</center></td>
-									<td>Add Edit and delete button</td>
+									<td>
+										<center>
+											<button class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span></button>
+											<button class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></button>
+										</center>
+									</td>
 								</tr>
 								<tr>
 									<td>Harry Potter and The Deathly Hallows</td>
 									<td><center>J.K. Rowling</center></td>
 									<td><center>2007</center></td>
 									<td><center>9-7805-4501-022-1</center></td>
-									<td>Add Edit and delete button</td>
-								</tr>
+									<td>
+										<center>
+											<button class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span></button>
+											<button class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></button>
+										</center>
+									</td>
+								</tr> 
 							</tbody>
 						</table>
 					</div>
