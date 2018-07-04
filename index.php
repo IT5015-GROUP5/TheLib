@@ -1,15 +1,16 @@
 <?php
 	session_start();
+
+	if(isset($_SESSION['logged_in'])) {
+		header('Location: home.php');
+	}
+
+	include('links.php');
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Login</title>
-	<link rel="icon" href="images/logo.png">
-	<link rel="stylesheet" type="text/css" href="css/index.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 	<div class="row">
@@ -24,6 +25,7 @@
 			<?php
 				if(isset($_SESSION['registermsg'])){
 					echo "<p class='text-center' style='color:red; font-weight:bold;'>REGISTRATION FAILED!</p>";
+					echo "<p class='text-center' style='color:red; font-weight:bold;'>USERNAME ALREADY EXISTS!</p>";
 					unset($_SESSION['registermsg']);
 				}else if(isset($_SESSION['loginmsg'])){
 					echo "<p class='text-center' style='color:red; font-weight:bold;'>INVALID USERNAME/PASSWORD!</p>";
@@ -79,7 +81,6 @@
 		    </div>
 		  </div>
 		</div>
-
 	</div>
 </body>
 </html>

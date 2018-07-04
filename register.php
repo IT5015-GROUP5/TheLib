@@ -1,16 +1,15 @@
 <?php
 	session_start();
-	require("db_connect.php");
+	require('db_connect.php');
 
-	//////////////////SQL Query/////////////////
-	var_dump($_POST);
+	//SQL Query
 	$searchquery = "SELECT username FROM user where username = '".$_POST['username']."'";
 	$result = mysqli_query($conn,$searchquery);
 	if (!$result) {
 		die("Error from query".$result->connect_error);
 	}
 
-	//////////////Data Handling////////////////
+	//Data Handling
 	$row = mysqli_fetch_assoc($result);
 	var_dump($row, $result);
 	if ($row == NULL) {
@@ -21,7 +20,6 @@
 		header("Location:index.php");
 	}else {
 		$_SESSION['registermsg'] = "FAILED";
-		header("Location:index.php");
+		header('Location:index.php');
 	}
-	///////////////////////////////////////////
 ?>
