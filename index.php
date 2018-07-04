@@ -4,13 +4,15 @@
 	if(isset($_SESSION['logged_in'])) {
 		header('Location: home.php');
 	}
-
-	include('links.php');
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Login</title>
+	<title>Login</title>	
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<?php
+		include('links.php');
+	?>
 </head>
 <body>
 	<div class="row">
