@@ -2,7 +2,7 @@
 	session_start();
 	require("db_connect.php");
 
-	$query = "SELECT book_name, author.firstName, author.lastName, year_pub, isbn 
+	$query = "SELECT book_name, author.firstName, author.lastName, year_pub, isbn, bookID 
 				FROM `books` 
 				JOIN author ON author.authorID = book_author";
 	$result = mysqli_query($conn, $query);
@@ -65,8 +65,13 @@
 											echo "<td><center>" .$row['isbn']. "</center></td>";
 											echo "<td>
 													<center>
-														<button class='btn btn-warning btn-xs'><span class='glyphicon glyphicon-pencil'></span></button>
-														<button class='btn btn-danger btn-xs'><span class='glyphicon glyphicon-trash'></span></button>
+														<form action='delete_book.php' method='POST'>
+															<button class='btn btn-warning btn-xs'><span class='glyphicon glyphicon-pencil'></span></button>
+														
+															<input type='hidden'  name='bookID' value='".$row['bookID']."'>
+															<input type='hidden' name='bookTitle' value='".$row['book_name']."'>
+															<button type='submit' class='btn btn-danger btn-xs'><span class='glyphicon glyphicon-trash'></span></button>
+														</form>
 													</center>
 												</td>";
 										echo "</tr>";

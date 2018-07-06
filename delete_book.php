@@ -2,6 +2,10 @@
 	session_start();
 	require("db_connect.php");
 
+	////////////////////////////////////////////
+	//	   This requires bookID and Title     //
+	////////////////////////////////////////////
+
 	$actionQuery = "SELECT * FROM actions WHERE action_name='Deleted Book'";
 	$actionResult = mysqli_query($conn, $actionQuery);
 	$actionRow = mysqli_fetch_assoc($actionResult);
@@ -12,6 +16,7 @@
 	$userQuery = "SELECT userId FROM user WHERE username = '".$user."'";
 	$userResult = mysqli_query($conn,$userQuery);
 	$userRow = mysqli_fetch_assoc($userResult);
+	$title = $_POST['bookTitle'];
 	$description = "Deleted ".$title;
 	$dateTime = date("Y-m-d H:i:s");
 
@@ -33,18 +38,18 @@
 		if(mysqli_query($conn,$logQuery)){
 			echo "<script> 
 				alert('Successfully Deleted from the Library');
-				window.location.href='show_books.php';
+				window.location.href='home.php';
 			</script>";
 		}else{
 			echo "<script> 
 				alert('Error');
-				window.location.href='show_books.php';
+				window.location.href='home.php';
 			</script>";
 		}
 	}else{
 		echo "<script> 
 				alert('Error');
-				window.location.href='show_books.php';
+				window.location.href='home.php';
 			</script>";
 	}
 ?>
