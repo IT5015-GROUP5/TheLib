@@ -2,7 +2,9 @@
 	session_start();
 	require("db_connect.php");
 
-	$query = "SELECT book_name, author.author_name, year_pub, isbn FROM `books` JOIN author ON author.authorID = book_author";
+	$query = "SELECT book_name, author.firstName, author.lastName, year_pub, isbn 
+				FROM `books` 
+				JOIN author ON author.authorID = book_author";
 	$result = mysqli_query($conn, $query);
 
 ?>
@@ -58,7 +60,7 @@
 									{
 										echo "<tr>";
 											echo "<td><a type='button' data-toggle='modal' data-target='#bookModal'>" .$row['book_name']. "</a></td>";
-											echo "<td><center>" .$row['author_name']. "</center></td>";
+											echo "<td><center>" .$row['firstName']." ".$row['lastName']."</center></td>";
 											echo "<td><center>" .$row['year_pub']. "</center></td>";
 											echo "<td><center>" .$row['isbn']. "</center></td>";
 											echo "<td>
