@@ -2,6 +2,10 @@
 	session_start();
 	require("db_connect.php");
 
+	if(!isset($_SESSION['logged_in'])) {
+		header('Location:index.php');
+	}
+
 	$query = "SELECT user.username, actions.action_name, action, time_of_action 
 				FROM logs 
 				JOIN user ON user.userId = accountID 
