@@ -1,9 +1,7 @@
 <?php
-session_start();
-require("db_connect.php");
+	session_start();
+	require("db_connect.php");
 
-if(isset($_POST['bookTitle']) && isset($_POST['fName']) && isset($_POST['lName']) && isset($_POST['bookDesc']) && isset($_POST['ISBN']) && isset($_POST['pageCount']) && isset($_POST['pubYear']))
-{
 	//FOR BOOK DETAILS
 	$title = $_POST['bookTitle'];
 	$fname = $_POST['fName'];
@@ -26,7 +24,6 @@ if(isset($_POST['bookTitle']) && isset($_POST['fName']) && isset($_POST['lName']
 	$userRow = mysqli_fetch_assoc($userResult);
 	$description = "Added ".$title;
 	$dateTime = date("Y-m-d H:i:s");
-
 
 	if($userRow != NULL){
 		$userId = $userRow['userId'];
@@ -54,19 +51,18 @@ if(isset($_POST['bookTitle']) && isset($_POST['fName']) && isset($_POST['lName']
 
 	//INSERT BOOK QUERY
 	$query2 = "INSERT INTO books (book_name, year_pub, isbn, description, page_number, book_author) 
-						VALUES ('".$title."',".$pub.",".$isbn.",'".$desc."','".$page."',".$authorId.")";
-
-	//GET ID OF BOOK RECENTLY INSERTED
+						VALUES ('".$title."',".$pub.",'".$isbn."','".$desc."',".$page.",".$authorId.")";
+		//GET ID OF BOOK RECENTLY INSERTED
 	$bookIDQuery = "SELECT * FROM books WHERE book_name='".$title."'";
 	$bookIDResult = mysqli_query($conn, $bookIDQuery);
 	$bookIDRow = mysqli_fetch_assoc($bookIDResult);
-	$boodIDInserted = $bookIDRow["bookID"];
+	$bookIDInserted = $bookIDRow["bookID"];
 
 	//AFTER INSERTING BOOK QUERY
 	if(mysqli_query($conn,$query2)){
 		//INSERT LOG QUERY
 		$logQuery = "INSERT INTO logs (accountID, bookID, actionID, action, time_of_action) 
-						VALUES ('".$userId."','".$boodIDInserted."','".$actionIDGot."','".$description."','".$dateTime."')";
+						VALUES (".$userId.",".$bookIDInserted.",".$actionIDGot.",'".$description."','".$dateTime."')";
 		if(mysqli_query($conn,$logQuery)){
 			echo "<script> 
 				alert('Successfully Added to the Library');
@@ -74,15 +70,14 @@ if(isset($_POST['bookTitle']) && isset($_POST['fName']) && isset($_POST['lName']
 			</script>";
 		}else{
 			echo "<script> 
-				alert('Error');
+				alert('Error: Failed inserting log query!');
 				window.location.href='add_books.php';
 			</script>";
 		}
 	}else{
 		echo "<script> 
-				alert('Error');
+				alert('Error: Failed adding new book!');
 				window.location.href='add_books.php';
 			</script>";
 	}
-}
 ?>
