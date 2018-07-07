@@ -5,7 +5,7 @@
 
 @font-face {
 	font-family: Roboto;
-		src: url(fonts/Robot.ttf);
+		src: url(fonts/Roboto.ttf);
 }
 
 body, html {
@@ -51,4 +51,25 @@ section.sec1 {
 	font-size: 30px;
 	font-weight: lighter;
 	margin-top: 75px;
+}
+
+.edit-page-label {
+	font-family: Roboto;
+	font-size: 30px;
+	font-weight: lighter;
+	margin-top: 75px;
+}
+
+.edit-btn {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 60%;
+	font-family: Renner;
+	letter-spacing: 2px;
+	font-size: 2em;
+	background-color: #673AB7;
+	color: white;
+	-webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
 }
