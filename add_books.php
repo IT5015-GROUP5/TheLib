@@ -34,20 +34,20 @@
 				<input type = "hidden" name = "user" value = "<?php echo $_SESSION['username']; ?>">
 				<div class="form-group bookInput">
 					<label for="bookTitle">BOOK TITLE</label>
-    				<input type="text" class="form-control" name="bookTitle" id="bookTitle" placeholder="Eleanor and Park">
+    				<input type="text" class="form-control" name="bookTitle" id="bookTitle" placeholder="Eleanor and Park" required>
 				</div>
 				<div class="form-group bookInput">
 					<label for="bookAuthor">AUTHOR</label>
     				<div class="row">
     					<div class="col col-md-6">
     						<div class="input-group">
-							  <input type="text" class="form-control" name="fName" placeholder="Rainbow" aria-describedby="basic-addon2">
+							  <input type="text" class="form-control" name="fName" placeholder="Rainbow" aria-describedby="basic-addon2" required>
 							  <span class="input-group-addon" id="basic-addon2">First Name</span>
 							</div>
     					</div>
     					<div class="col col-md-6">
     						<div class="input-group">
-							  <input type="text" class="form-control" name="lName" placeholder="Rowell" aria-describedby="basic-addon2">
+							  <input type="text" class="form-control" name="lName" placeholder="Rowell" aria-describedby="basic-addon2" required>
 							  <span class="input-group-addon" id="basic-addon2">Last Name</span>
 							</div>
     					</div>
@@ -61,17 +61,17 @@
 			  		<div class="col col-md-6">
 			  			<div class="form-group bookInput">
 							<label for="bookISBN">ISBN</label>
-		    				<input type="text" class="form-control" name="ISBN" id="bookISBN" placeholder="0-1234-1563-645-6">
+		    				<input type="text" class="form-control" name="ISBN" id="bookISBN" placeholder="0-1234-1563-645-6" required>
 						</div>
 						<div class="form-group bookInput">
 							<label for="bookPageCount">PAGE COUNT</label>
-		    				<input type="text" class="form-control" name="pageCount" id="bookPageCount" placeholder="333">
+		    				<input type="text" class="form-control" name="pageCount" id="bookPageCount" placeholder="333" required>
 						</div>
 			  		</div>
 			  		<div class="col col-md-6">
 			  			<div class="form-group bookInput">
 							<label for="bookYearPub">YEAR PUBLISHED</label>
-		    				<input type="text" class="form-control" name="pubYear" id="bookYearPub" placeholder="2012">
+		    				<input type="text" class="form-control" name="pubYear" id="bookYearPub" placeholder="2012" required>
 						</div>
 						<button class="btn addBook-btn" type="submit">SUBMIT</button>
 			  		</div>
