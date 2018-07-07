@@ -53,36 +53,34 @@
 		    <div class="modal-dialog">
 			    <form action="register.php" method="POST">
 			      <!-- Modal content-->
-			      <div class="modal-content">
-			        <div class="modal-header">
-			          <button type="button" class="close" data-dismiss="modal">&times;</button>
-			          <p class="modal-title register-modal-page-label">Register new user</p>
-			        </div>
-
-			        <div class="modal-body">
-			          <p>Kindly fill out the fields below.</p>
-			          <div class="form-group">
-					    <label for="register-name-form">Name</label>
-					    <input type="text" name="name" class="form-control" id="register-name-form" placeholder="Enter name" required>
-					  </div>
-					  <div class="form-group">
-					    <label for="register-username-form">Username</label>
-					    <input type="text" name="username" class="form-control" id="register-username-form" placeholder="Enter username" required>
-					  </div>
-					  <div class="form-group">
-					    <label for="register-password-form">Password</label>
-					    <input type="password" name="pass" class="form-control" id="register-password-form" placeholder="Password" required>
-					  </div>
-			        </div>
-			        <div class="modal-footer">
-			        	<button type="submit" class="btn btn-success register-modal-btn">Register</button>
-			          <button type="button" class="btn btn-default register-modal-close" data-dismiss="modal">Close</button>
-			        </div>
-			      </div>
+			      	<div class="modal-content">
+			        	<div class="modal-header">
+				          <button type="button" class="close" data-dismiss="modal">&times;</button>
+				          <p class="modal-title register-modal-page-label">Register new user</p>
+			        	</div>
+				        <div class="modal-body">
+					        <p>Kindly fill out the fields below.</p>
+					        <div class="form-group">
+							    <label for="register-name-form">Name</label>
+							    <input type="text" name="name" class="form-control" id="register-name-form" placeholder="Enter name" required>
+							</div>
+							<div class="form-group">
+							    <label for="register-username-form">Username</label>
+							    <input type="text" name="username" class="form-control" id="register-username-form" placeholder="Enter username" required>
+							</div>
+						  	<div class="form-group">
+							    <label for="register-password-form">Password</label>
+							    <input type="password" name="pass" class="form-control" id="register-password-form" placeholder="Password" required>
+						  	</div>
+				        </div>
+				        <div class="modal-footer">
+				        	<button type="submit" class="btn btn-success register-modal-btn">Register</button>
+				          	<button type="button" class="btn btn-default register-modal-close" data-dismiss="modal">Close</button>
+				        </div>
+			      	</div>
 			    </form>
 		    </div>
-		  </div>
-		</div>
+		 </div>
 	</div>
 </body>
 </html>
