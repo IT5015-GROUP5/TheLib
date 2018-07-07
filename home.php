@@ -6,11 +6,10 @@
 		header('Location:index.php');
 	}
 
-	$query = "SELECT book_name, author.firstName, author.lastName, year_pub, isbn, bookID 
+	$query = "SELECT book_name, author.firstName, author.lastName, year_pub, isbn, bookID, description, page_number
 				FROM `books` 
 				JOIN author ON author.authorID = book_author";
 	$result = mysqli_query($conn, $query);
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -56,19 +55,16 @@
 									while($row = mysqli_fetch_array($result))
 									{
 										echo "<tr>";
-											echo "<td><a type='button' data-toggle='modal' data-target='#bookModal'>" .$row['book_name']. "</a></td>";
-											echo "<td><center>" .$row['firstName']." ".$row['lastName']."</center></td>";
-											echo "<td><center>" .$row['year_pub']. "</center></td>";
-											echo "<td><center>" .$row['isbn']. "</center></td>";
+											echo "<td id='title'><a type='button' onclick=\"bookInfo('".$row['book_name']."','".$row['description']."')\" data-toggle='modal' data-target='#bookModal'>" .$row['book_name']. "</a></td>";
+											echo "<td id='author'><center>" .$row['firstName']." ".$row['lastName']."</center></td>";
+											echo "<td id='year'><center>" .$row['year_pub']. "</center></td>";
+											echo "<td id='isbn'><center>" .$row['isbn']. "</center></td>";
 											echo "<td>
 													<center>
-														<form action='delete_book.php' method='POST'>
-															<button class='btn btn-warning btn-xs'><span class='glyphicon glyphicon-pencil'></span></button>
-														
-															<input type='hidden'  name='bookID' value='".$row['bookID']."'>
-															<input type='hidden' name='bookTitle' value='".$row['book_name']."'>
-															<button type='submit' class='btn btn-danger btn-xs'><span class='glyphicon glyphicon-trash'></span></button>
-														</form>
+														<button class='btn btn-warning btn-xs' onclick=\"bookDetails('".$row['bookID']."','".$row['book_name']."','".$row['firstName']."','".$row['lastName']."','".$row['year_pub']."','".$row['isbn']."','".$row['description']."','".$row['page_number']."')\" data-toggle='modal' data-target='#editModal'><span class='glyphicon glyphicon-pencil'></span></button>
+														<input type='hidden'  name='bookID' value='".$row['bookID']."'>
+														<input type='hidden' name='bookTitle' value='".$row['book_name']."'>
+														<a href='delete_book.php'><button class='btn btn-danger btn-xs'><span class='glyphicon glyphicon-trash'></span></button></a>
 													</center>
 												</td>";
 										echo "</tr>";
@@ -77,7 +73,56 @@
 							</tbody>
 						</table>
 					</div>
-				</div>
+					<!-- MODAL FOR THE EDIT BOOK-->
+					<div class="modal fade" id="editModal" role="dialog">
+					    <div class="modal-dialog">
+						    <form action="edit_book.php" method="POST">
+						    	<input type = "hidden" name = "user" value = "<?php echo $_SESSION['username']; ?>">
+						      	<!-- Modal content-->
+						      	<div class="modal-content">
+						        	<div class="modal-header">
+							          <button type="button" class="close" data-dismiss="modal">&times;</button>
+							          <p class="modal-title register-modal-page-label">Edit Book Record</p>
+						        	</div>
+							        <div class="modal-body">
+								        <div class="form-group">
+										    <label for="book-title-form">Book Title</label>
+										    <input type="hidden" name='bookId' class="form-control" id="book-id-form">
+										    <input type="text" name="title" class="form-control" id="book-title-form" required>
+										</div>
+										<div class="form-group">
+										    <label for="book-authorfname-form">Author</label>
+										    <input type="text" name="authorfname" class="form-control" id="book-authorfname-form" required>
+										</div>
+										<div class="form-group">
+										    <label for="book-authorlname-form">Author</label>
+										    <input type="text" name="authorlname" class="form-control" id="book-authorlname-form" required>
+										</div>
+									  	<div class="form-group" style="display:inline-block; width:52%">
+										    <label for="book-year-form">Year</label>
+										    <input type="text" name="year" class="form-control" id="book-year-form" required>
+									  	</div>
+									  	<div class="form-group" style="display:inline-block; width:40%; margin-left:7%">
+										    <label for="book-pageno-form">Page Number</label>
+										    <input type="text" name="pageno" class="form-control" id="book-pageno-form" required>
+									  	</div>
+									  	<div class="form-group">
+										    <label for="book-isbn-form">ISBN</label>
+										    <input type="text" name="isbn" class="form-control" id="book-isbn-form" required>
+									  	</div>
+									  	<div class="form-group">
+										    <label for="book-desc-form">Description</label>
+										    <input type="text" name="desc" class="form-control" id="book-desc-form" required>
+									  	</div>
+							        </div>
+							        <div class="modal-footer">
+							        	<button type="submit" class="btn btn-success edit-modal-btn">Save Changes</button>
+							          	<button type="button" class="btn btn-default edit-modal-close" data-dismiss="modal">Cancel</button>
+							        </div>
+						      	</div>
+						    </form>
+					    </div>
+					</div>
 				<div class="col col-md-2"></div>
 			</div>
 		</section>
@@ -87,28 +132,25 @@
 	<div class="modal fade" id="bookModal" role="dialog">
 	    <div class="modal-dialog">
 		      <!-- Modal content-->
-		      <div class="modal-content">
-		        <div class="modal-header">
-		          <button type="button" class="close" data-dismiss="modal">&times;</button>
-		          <p class="modal-title bookInfo-modal-page-label">Book Information</p>
-		        </div>
-		        <!-- Place book information inside this div using Php -->
-		        <div class="modal-body">
-			    	<div class="book-name-modal">
-			    		<p><strong>Book Name</strong></p>
-			    		<?php
-
-			    		?>
-			    	</div>
-		        </div>
-		        <div class="modal-footer">
-		        	<button type="submit" class="btn btn-success register-modal-btn">Register</button>
-		          <button type="button" class="btn btn-default register-modal-close" data-dismiss="modal">Close</button>
-		        </div>
-		      </div>
+		      	<div class="modal-content">
+			        <div class="modal-header">
+			          	<button type="button" class="close" data-dismiss="modal">&times;</button>
+			          	<p class="modal-title bookInfo-modal-page-label">Book Information</p>
+			        </div>
+			        <!-- Place book information inside this div using Php -->
+			        <div class="modal-body">
+				    	<div class="book-name-modal">
+				    		<p id="book-title" style="font-weight:bold"></p>
+				    		<p id="book-info"></p>
+				    	</div>
+			        </div>
+			        <div class="modal-footer">
+			        	<button type="submit" class="btn btn-success edit-modal-btn">Register</button>
+			          	<button type="button" class="btn btn-default edit-modal-close" data-dismiss="modal">Close</button>
+			        </div>
+		      	</div>
 	    </div>
 	</div>
-
 </body>
 </html>
 <script type="text/javascript">
@@ -120,11 +162,26 @@
 			$('nav').removeClass('black');
 		}
 	});
-</script>
-<script>
-	$(document).ready(function(){
+
+	$(document).ready(function() {
 		$("#bookTable").DataTable({
 			"pagingType": "simple"
 		});
 	});
+
+	function bookInfo(title, info) {
+		$(".modal-body #book-title").text(title);
+		$(".modal-body #book-info").text(info);
+	}
+
+	function bookDetails(id, title, authorfname, authorlname, year, isbn, desc, pageno) {
+		$(".modal-body #book-id-form").val(id);
+		$(".modal-body #book-title-form").val(title);
+		$(".modal-body #book-authorfname-form").val(authorfname);
+		$(".modal-body #book-authorlname-form").val(authorlname);
+		$(".modal-body #book-year-form").val(year);
+		$(".modal-body #book-pageno-form").val(pageno);
+		$(".modal-body #book-isbn-form").val(isbn);
+		$(".modal-body #book-desc-form").val(desc);
+	}
 </script>
