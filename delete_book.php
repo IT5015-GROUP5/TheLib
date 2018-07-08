@@ -16,7 +16,7 @@
 	$userQuery = "SELECT userId FROM user WHERE username = '".$user."'";
 	$userResult = mysqli_query($conn,$userQuery);
 	$userRow = mysqli_fetch_assoc($userResult);
-	$title = $_POST['bookTitle'];
+	$title = $_POST['BookTitle'];
 	$description = "Deleted ".$title;
 	$dateTime = date("Y-m-d H:i:s");
 
@@ -24,11 +24,10 @@
 		$userId = $userRow['userId'];
 	}
 
-	$bookID = $_POST['bookID'];
+	$bookID = $_POST['id'];
 
 	//DELETE BOOK QUERY
 	$deletequery = "DELETE FROM books WHERE bookID = '".$bookID."'";
-
 
 	//DELETE BOOK QUERY AND RECORD LOG
 	if(mysqli_query($conn,$deletequery)){
@@ -36,20 +35,14 @@
 		$logQuery = "INSERT INTO logs (accountID, bookID, actionID, action, time_of_action) 
 						VALUES ('".$userId."','".$bookID."','".$actionIDGot."','".$description."','".$dateTime."')";
 		if(mysqli_query($conn,$logQuery)){
-			echo "<script> 
-				alert('Successfully Deleted from the Library');
-				window.location.href='home.php';
-			</script>";
+			$_SESSION['deletemsg'] = 'SUCCESS';
+			header('Location:home.php');
 		}else{
-			echo "<script> 
-				alert('Error');
-				window.location.href='home.php';
-			</script>";
+			$_SESSION['deletemsg'] = 'FAILEDLOG';
+			header('Location:home.php');;
 		}
 	}else{
-		echo "<script> 
-				alert('Error');
-				window.location.href='home.php';
-			</script>";
+		$_SESSION['deletemsg'] = 'FAILED';
+		header('Location:home.php');
 	}
 ?>

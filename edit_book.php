@@ -61,20 +61,14 @@
 		$logQuery = "INSERT INTO logs (accountID, bookID, actionID, action, time_of_action) 
 						VALUES (".$userId.",".$bookId.",".$actionIDGot.",'".$description."','".$dateTime."')";
 		if(mysqli_query($conn,$logQuery)){
-			echo "<script> 
-				alert('Successfully Edited Book');
-				window.location.href='home.php';
-			</script>";
+			$_SESSION['editmsg'] = 'SUCCESS';
+			header('Location:home.php');
 		}else{
-			echo "<script> 
-				alert('Error: Failed inserting log query!');
-				window.location.href='home.php';
-			</script>";
+			$_SESSION['editmsg'] = 'FAILEDLOG';
+			header('Location:home.php');
 		}
 	}else{
-		echo "<script> 
-				alert('Error: Failed updating book!');
-				window.location.href='home.php';
-			</script>";
+		$_SESSION['editmsg'] = 'FAILED';
+		header('Location:home.php');
 	}
 ?>

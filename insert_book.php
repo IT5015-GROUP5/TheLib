@@ -51,7 +51,7 @@
 
 	//INSERT BOOK QUERY
 	$query2 = "INSERT INTO books (book_name, year_pub, isbn, description, page_number, book_author) 
-						VALUES ('".$title."',".$pub.",'".$isbn."','".$desc."',".$page.",".$authorId.")";
+					VALUES ('".$title."',".$pub.",'".$isbn."','".$desc."',".$page.",".$authorId.")";
 		//GET ID OF BOOK RECENTLY INSERTED
 	$bookIDQuery = "SELECT * FROM books WHERE book_name='".$title."'";
 	$bookIDResult = mysqli_query($conn, $bookIDQuery);
@@ -62,22 +62,15 @@
 	if(mysqli_query($conn,$query2)){
 		//INSERT LOG QUERY
 		$logQuery = "INSERT INTO logs (accountID, bookID, actionID, action, time_of_action) 
-						VALUES (".$userId.",".$bookIDInserted.",".$actionIDGot.",'".$description."','".$dateTime."')";
+						VALUES ('".$userId."','".$bookIDInserted."',".$actionIDGot.",'".$description."','".$dateTime."')";
 		if(mysqli_query($conn,$logQuery)){
-			echo "<script> 
-				alert('Successfully Added to the Library');
-				window.location.href='add_books.php';
-			</script>";
+			$_SESSION['addmsg'] = 'SUCCESS';
+			header('Location:home.php');
 		}else{
-			echo "<script> 
-				alert('Error: Failed inserting log query!');
-				window.location.href='add_books.php';
-			</script>";
+			var_dump($conn, $logQuery);
 		}
 	}else{
-		echo "<script> 
-				alert('Error: Failed adding new book!');
-				window.location.href='add_books.php';
-			</script>";
+		$_SESSION['addmsg'] = 'FAILED';
+		header('Location:home.php');
 	}
 ?>

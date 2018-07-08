@@ -9,7 +9,6 @@
 	$query = "SELECT user.username, actions.action_name, action, time_of_action 
 				FROM logs 
 				JOIN user ON user.userId = accountID 
-				JOIN books ON books.bookID = logs.bookID 
 				JOIN actions ON actions.actionID = logs.actionID";
 
 	$result = mysqli_query($conn, $query);
