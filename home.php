@@ -192,7 +192,7 @@
 									  	</div>
 									  	<div class="form-group">
 										    <label for="book-desc-form">Description</label>
-										    <input type="text" name="desc" class="form-control" id="book-desc-form" required>
+										    <textArea type="text" name="desc" class="form-control" id="book-desc-form" required></textarea>
 									  	</div>
 							        </div>
 							        <div class="modal-footer">
