@@ -14,8 +14,7 @@
 	var_dump($row, $result);
 	if ($row == NULL) {
 		$query = "INSERT INTO user (username, password, name) 
-				  VALUES ('".$_POST['username']."', '".$_POST['pass']."', '".$_POST['name']."')";
-		var_dump($query);
+				  	VALUES ('".$_POST['username']."', '".$_POST['pass']."', '".$_POST['name']."')";
 		$newresult = mysqli_query($conn,$query);
 		header("Location:index.php");
 	}else {
